@@ -169,19 +169,19 @@ function formatOutputLines(computed, selected, filtered = {}, resolveSymb) {
     const pSelected = selected.selectedParents.includes(parent.name);
     lines.push(formatOutputLine(parent, pIndex, pIncludedSymb, pSelected));
     // resolve children lines. since we must preserve the aria-posinset
-    // for filtered children we gonna do a post filter  
+    // for filtered children we gonna do a dynamic filter using a guard  
     parent.children.forEach((child, cIndex) => {
-      const cIncludedSymb = resolveIncludedSymbol(child, resolveSymb);
-      const cSelected =  selected.selectedChildren.some(item => {
-        return item.includes(child.name) && item.includes(parent.name);
-      });
-
       if (
         !filtered || 
         !Object.keys(filtered).length || 
         !filtered.childNameFilter || 
         (child.name === `child${filtered.childNameFilter}`)
       ) {
+        const cIncludedSymb = resolveIncludedSymbol(child, resolveSymb);
+        const cSelected =  selected.selectedChildren.some(item => {
+          return item.includes(child.name) && item.includes(parent.name);
+        });
+
         lines.push(formatOutputLine(child, cIndex, cIncludedSymb, cSelected, 2));
       }
     })
