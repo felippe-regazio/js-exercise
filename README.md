@@ -16,7 +16,7 @@ npm run test
 
 # Output
 
-All tests must pass, the output must be
+All the tests must pass, the output must be
 
 ```
 true [
