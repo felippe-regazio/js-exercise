@@ -222,10 +222,6 @@ function resolveIncludedSymbol(computedItem, resolveSymb) {
   }
 }
 
-function isItemSelected(item, selected) {
-  return ;
-}
-
 function test(computedInput, selectedInput, filteredInput, expectedOutputLines, resolveSymb) {
   const receivedOutputLines = formatOutputLines(computedInput, selectedInput, filteredInput, resolveSymb);
   console.log(
